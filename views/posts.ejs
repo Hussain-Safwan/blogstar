@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+
+    <title>Blogstar</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <div class="nav__left">
+          <a href="/">BlogStar</a>
+        </div>
+
+        <div class="nav__right">
+          <a href="/">My blogs</a>
+          <a href="/addpost">Add blog</a>
+        </div>
+      </nav>
+      <div class="blogs">
+        
+        <% for (let i=0; i < posts.length; i++) { %>
+          <div class="blog">
+            <div class="blog__title">
+              <h2><%= posts[i].title %></h2>
+            </div>
+  
+            <div class="blog__desc">
+              <p>
+                <% if (posts[i].desc.length > 100) { %>
+                  <%= posts[i].desc.substr(0, 100) %>...
+                <% } else { %>
+                  <%= posts[i].desc %>
+                  <% } %>
+                
+              </p>
+            </div>
+  
+            <div class="blog__details_btn">
+              <a href="/post/<%= posts[i].id %>">READ</a>
+            </div>
+          </div>
+        <% } %>
+        
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+
+    <title>Blogstar</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <div class="nav__left">
+          <a href="/">BlogStar</a>
+        </div>
+
+        <div class="nav__right">
+          <a href="/">My blogs</a>
+          <a href="/addpost">Add blog</a>
+        </div>
+      </nav>
+
+      <div class="add_new_blog">
+          <div class="form-group">
+            <label for="blog__title">Blog Title</label>
+            <input type="text" id="blog__title" />
+          </div>
+
+          <div class="form-group">
+            <label for="blog__desc">Content</label>
+            <input type="text" id="blog__desc" />
+          </div>
+
+          <div class="form-group__btns">
+            <button id="cancel">CANCEL</button>
+            <button id="submit">SUBMIT</button>
+          </div>
+      </div>
+    </div>
+  </body>
+  <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+<script>
+  $('#submit').click(e => {
+    const title = $('#blog__title').val()
+    const desc = $('#blog__desc').val()
+
+    const data = {
+      title,
+      desc
+    }
+
+    $.ajax({
+      type: 'POST',
+      url: '/addpost',
+      data,
+      success: data => {
+        location = '/'
+      }
+    })
+  })
+</script>
+
+</html>
